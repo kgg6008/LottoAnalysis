@@ -29,7 +29,7 @@ class UpdateDB():
     def _need_update_data(self, name):
         try:
             conn = sqlite3.connect(name)
-            df = pd.read_sql("SELECT * FROM 회차별_당첨정보", conn, index_col='회차')
+            df = pd.read_sql("SELECT 회차 FROM 회차별_당첨정보", conn, index_col='회차')
         except:
             raise ("해당 파일이 존재하는지 확인 해 주세요.\n", sys.exc_info()[0])
         now_Ver = len(df)
